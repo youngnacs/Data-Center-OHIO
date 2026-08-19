@@ -5,7 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Any
 
-from heartland.assumptions import load_assumptions
+from ports.assumptions import load_assumptions
 
 
 LITERS_PER_MILLION_GALLONS = 3_785_412.0

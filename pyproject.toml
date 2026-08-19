@@ -3,9 +3,9 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "heartland-ohio-campus"
-version = "0.1.0"
-description = "20-year super-scale data center architecture and capacity model for Ohio"
+name = "ports-pike-campus"
+version = "0.2.0"
+description = "PORTS-Pike Integrated Campus Operating Architecture and capacity model"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
@@ -16,7 +16,7 @@ dependencies = [
 dev = ["pytest>=8.0"]
 
 [project.scripts]
-heartland = "heartland.cli:main"
+ports = "ports.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

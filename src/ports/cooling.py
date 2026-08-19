@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-from heartland.assumptions import load_assumptions
+from ports.assumptions import load_assumptions
 
 
 @dataclass(frozen=True)
