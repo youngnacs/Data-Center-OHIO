@@ -1,0 +1,90 @@
+# Heartland Super Campus — planning assumptions (2026 USD, order-of-magnitude)
+# These are design-basis figures for master planning, not bid estimates.
+
+program:
+  name: Heartland Super Campus
+  code: HSC-OH
+  horizon_start: 2026
+  horizon_end: 2046
+  target_it_mw: 1200
+  contracted_interconnection_mw: 1600
+  land_acres: 1100
+  climate_zone: ASHRAE 5A
+
+building_types:
+  A:
+    name: Cloud / general compute
+    it_mw: 48
+    design_pue: 1.20
+    target_pue: 1.15
+    avg_rack_kw: 12
+    design_wue_l_per_kwh: 0.08
+    capex_usd_per_it_mw: 11500000
+    redundancy: 2N-UPS / N+1 mechanical
+  B:
+    name: AI factory
+    it_mw: 120
+    design_pue: 1.12
+    target_pue: 1.08
+    avg_rack_kw: 100
+    design_wue_l_per_kwh: 0.02
+    capex_usd_per_it_mw: 16000000
+    redundancy: block-redundant power / N+1 CDU
+  C:
+    name: Storage and network core
+    it_mw: 18
+    design_pue: 1.25
+    target_pue: 1.20
+    avg_rack_kw: 8
+    design_wue_l_per_kwh: 0.10
+    capex_usd_per_it_mw: 14000000
+    redundancy: 2N electrical and mechanical
+
+phases:
+  - id: P0
+    name: Enablement
+    start_year: 2026
+    end_year: 2028
+    buildings: {}
+  - id: P1
+    name: Foundation
+    start_year: 2028
+    end_year: 2031
+    buildings: {A: 2, B: 1, C: 1}
+  - id: P2
+    name: Scale
+    start_year: 2031
+    end_year: 2035
+    buildings: {A: 1, B: 2}
+  - id: P3
+    name: Super
+    start_year: 2035
+    end_year: 2040
+    buildings: {B: 3}
+  - id: P4
+    name: Horizon
+    start_year: 2040
+    end_year: 2046
+    buildings: {B: 2}
+
+campus_common:
+  enablement_capex_usd: 250000000
+  common_usd_per_it_mw: 1800000
+  site_load_uplift: 0.05
+  land_usd_per_acre: 45000
+  hours_per_year: 8760
+
+power:
+  grid_share_at_full_build: 0.70
+  btm_share_at_full_build: 0.30
+  bess_minutes_ai: 5
+  bess_minutes_cloud: 10
+  aep_dct_min_fraction_cap: 0.85
+  aep_ramp_years: 4
+  aep_term_years_after_ramp: 8
+
+cooling:
+  closed_loop_fill_liters_per_it_mw: 18000
+  evaporative_liters_per_kwh: 1.8
+  dry_cooler_design_db_c: 35
+  ohio_free_cooling_hours: 4500
