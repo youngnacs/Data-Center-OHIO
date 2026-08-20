@@ -1,0 +1,72 @@
+# PORTS-Pike Technology Campus — planning assumptions (2026 USD, order-of-magnitude)
+# Shell + campus only. USG gas generation (~$33B) and AEP 765 kV (~$4.2B) are separate FIDs.
+
+program:
+  name: PORTS-Pike Technology Campus
+  code: PORTS
+  horizon_start: 2026
+  horizon_end: 2040
+  phase_1_it_mw: 800
+  target_it_mw: 8000
+  contracted_interconnection_mw: 10000
+  land_acres: 640
+  climate_zone: ASHRAE 5A
+
+building_types:
+  CM:
+    name: Compute Module
+    it_mw: 100
+    design_pue: 1.12
+    target_pue: 1.08
+    avg_rack_kw: 100
+    design_wue_l_per_kwh: 0.02
+    capex_usd_per_it_mw: 16000000
+    redundancy: block-redundant power / N+1 CDU
+
+phases:
+  - id: P0
+    name: Enablement
+    start_year: 2026
+    end_year: 2028
+    buildings: {}
+  - id: P1
+    name: Foundation 800 MW
+    start_year: 2028
+    end_year: 2030
+    buildings: {CM: 8}
+  - id: P2
+    name: Scale
+    start_year: 2030
+    end_year: 2033
+    buildings: {CM: 16}
+  - id: P3
+    name: Super
+    start_year: 2033
+    end_year: 2036
+    buildings: {CM: 24}
+  - id: P4
+    name: Horizon 8 GW IT
+    start_year: 2036
+    end_year: 2040
+    buildings: {CM: 32}
+
+campus_common:
+  enablement_capex_usd: 800000000
+  common_usd_per_it_mw: 1800000
+  site_load_uplift: 0.05
+  land_usd_per_acre: 45000
+  hours_per_year: 8760
+
+power:
+  grid_share_at_full_build: 0.10
+  btm_share_at_full_build: 0.90
+  bess_minutes_ai: 5
+  aep_dct_min_fraction_cap: 0.85
+  aep_ramp_years: 4
+  aep_term_years_after_ramp: 8
+
+cooling:
+  closed_loop_fill_liters_per_it_mw: 18000
+  evaporative_liters_per_kwh: 1.8
+  dry_cooler_design_db_c: 35
+  ohio_free_cooling_hours: 4500
